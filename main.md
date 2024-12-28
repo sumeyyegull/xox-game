@@ -31,6 +31,27 @@ public:
 
     virtual void arttirSkor() { skor += 1; }  // Skoru artırma (her kazançta)
 
+virtual void hamleYap(int& satir, int& sutun) {  // Oyuncunun hamlesini alma
+        cout << ad << ", Satir ve Sutun girin (0, 1, 2): ";
+        while (!(cin >> satir >> sutun)) {  // Geçerli sayılar girilene kadar devam et
+            cout << "Lütfen iki tam sayı girin: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    }
+
+    virtual void kaydetVeriTabani() {  // Oyuncu skorunu bir dosyaya kaydetme
+        ofstream dosya("oyuncu_skorları.txt", ios::app);  // Dosyaya ekleme modunda aç
+        if (dosya.is_open()) {
+            dosya << ad << "- Skor: " << skor << endl;
+            dosya.close();  // Dosyayı kapat
+        } else {
+            cout << "Dosya acilamadi!" << endl;  // Dosya açılamazsa hata mesajı
+        }
+    }
+
+    virtual ~Oyuncu() = default;  // Sanal yıkıcı (temizleme işlemi için)
+};
 
 
 int main(){
