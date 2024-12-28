@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
+#include <limits>
 
 using namespace std;
 #define SIZE 3 // Tahtanın boyutu (3x3)
