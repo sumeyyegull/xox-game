@@ -15,6 +15,21 @@ public:
      doğru şekilde temizlenmesini sağlar. Default derleyicinin
      yıkıcıyı otomatik olarak oluşturmasını sağlar.*/
 };
+class Oyuncu {  // Oyuncu sınıfı temel sınıf
+protected:  //public de olur ama private olamaz turetilmiş sınıfımızdan cekemeyiz cunku
+    string ad;  // Oyuncunun adı
+    int skor;  // Oyuncunun skoru
+
+public:
+    Oyuncu(string oyuncuAd) : ad(oyuncuAd), skor(0) {}  // Yapıcı fonksiyon (başlangıçta skor 0)
+
+    virtual void setAd(string oyuncuAd) { ad = oyuncuAd; }  // Oyuncunun adını ayarlama
+    virtual string getAd() { return ad; }  // Oyuncunun adını alma
+
+    virtual void setSkor(int yeniSkor) { skor = yeniSkor; }  // Skoru ayarlama
+    virtual int getSkor() { return skor; }  // Skoru alma
+
+    virtual void arttirSkor() { skor += 1; }  // Skoru artırma (her kazançta)
 
 
 
