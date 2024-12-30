@@ -4,6 +4,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <limits>
+#include <ctime> // Rastgele sayı üretimi için
 
 using namespace std;
 #define SIZE 3 // Tahtanın boyutu (3x3)
@@ -53,7 +54,16 @@ virtual void hamleYap(int& satir, int& sutun) {  // Oyuncunun hamlesini alma
 
     virtual ~Oyuncu() = default;  // Sanal yıkıcı (temizleme işlemi için)
 };
+class BilgisayarOyuncu : public Oyuncu {  // Bilgisayar oyuncusu sınıfı (Oyuncu sınıfından türetilmiş)
+public:
+    BilgisayarOyuncu(string oyuncuAd) : Oyuncu(oyuncuAd) {}  // Yapıcı
 
+    void hamleYap(int& satir, int& sutun) override {  // Bilgisayarın hamlesini yapma (rastgele)
+        satir = rand() % SIZE;
+        sutun = rand() % SIZE;
+        cout << ad << " hamle yapti: (" << satir << ", " << sutun << ")" << endl;
+    }
+};
 
 int main(){
 
