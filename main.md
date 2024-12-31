@@ -65,6 +65,68 @@ public:
     }
 };
 
+class Tahta : public OyunNesnesi {  // Oyun tahtası sınıfı
+private:
+    char tahta[SIZE][SIZE];  // 3x3'lük karakter dizisi (tahta)
+
+public:
+    Tahta() {  // Yapıcı fonksiyon, tahtayı boşluklarla başlatır
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                tahta[i][j] = ' ';
+            }
+        }
+    }
+
+    char getAlan(int satir, int sutun) { return tahta[satir][sutun]; }  // Belirli bir alandaki sembolü alma
+
+    void setAlan(int satir, int sutun, char sembol) { tahta[satir][sutun] = sembol; }  // Alanı sembol ile güncelleme
+
+    void display() const override {  // Tahtayı ekrana basma
+        cout << "-------------" << endl;
+        for (int i = 0; i < SIZE; i++) {
+            cout << "| ";
+            for (int j = 0; j < SIZE; j++) {
+                cout << tahta[i][j] << " | ";
+            }
+            cout << endl;
+        }
+        cout << "-------------" << endl;
+    }
+
+    bool hamleYap(int satir, int sutun, char sembol) {  // Hamleyi tahtada yapma (geçerli bir hamle olup olmadığını kontrol eder)
+        if (satir < 0 || satir >= SIZE || sutun < 0 || sutun >= SIZE || tahta[satir][sutun] != ' ') {
+            return false;  // Geçersiz hamle
+        }
+        setAlan(satir, sutun, sembol);  // Hamleyi tahtada uygula
+        return true;
+    }
+
+    bool alanDoluMu() {  // Tahtadaki tüm alanlar dolu mu kontrolü
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (tahta[i][j] == ' ')  // Boş alan varsa
+                    return false;
+            }
+        }
+        return true;  // Tüm alanlar dolu
+    }
+
+    char kazananiBelirle() {  // Kazananı belirleme (3'lü aynı sembol yatay, dikey ya da çapraz)
+        for (int i = 0; i < SIZE; i++) {
+            if (tahta[i][0] == tahta[i][1] && tahta[i][1] == tahta[i][2] && tahta[i][0] != ' ')
+                return tahta[i][0];  // Yatay kazanan
+            if (tahta[0][i] == tahta[1][i] && tahta[1][i] == tahta[2][i] && tahta[0][i] != ' ')
+                return tahta[0][i];  // Dikey kazanan
+        }
+        if ((tahta[0][0] == tahta[1][1] && tahta[1][1] == tahta[2][2] && tahta[0][0] != ' '))
+            return tahta[0][0];  // Çapraz kazanan
+        if ((tahta[0][2] == tahta[1][1] && tahta[1][1] == tahta[2][0] && tahta[0][2] != ' '))
+            return tahta[0][2];  // Diğer çapraz kazanan
+        return ' ';  // Kazanan yok
+    }
+};
+
 int main(){
 
 
