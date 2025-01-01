@@ -126,6 +126,13 @@ public:
         return ' ';  // Kazanan yok
     }
 };
+class Oyun {  // Oyun sınıfı
+private:
+    Tahta tahta;  // Tahta nesnesi
+    Oyuncu* oyuncu1;  // 1. oyuncu
+    Oyuncu* oyuncu2;  // 2. oyuncu
+    Oyuncu* aktifOyuncu;  // Şu anki aktif oyuncu
+
 
 int main(){
 
