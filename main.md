@@ -166,10 +166,41 @@ public:
 };
 
 int main(){
+  srand(time(0)); // Rastgelelik için tohumlama
 
+    int secim;
+    cout << "Oyun modu secin: 1- Insan vs Insan, 2- Insan vs Bilgisayar: ";
+    cin >> secim;
 
+    Oyuncu* oyuncu1 = NULL;
+    Oyuncu* oyuncu2 = NULL;
 
+    if (secim == 1) {  // İnsan vs İnsan seçeneği
+        string ad1, ad2;
+        cout << "1. oyuncunun adini girin: ";
+        cin >> ad1;
+        cout << "2. oyuncunun adini girin: ";
+        cin >> ad2;
 
+        oyuncu1 = new Oyuncu(ad1);
+        oyuncu2 = new Oyuncu(ad2);
+    } else if (secim == 2) {  // İnsan vs Bilgisayar seçeneği
+        string ad1;
+        cout << "Oyuncunun adini girin: ";
+        cin >> ad1;
+
+        oyuncu1 = new Oyuncu(ad1);
+        oyuncu2 = new BilgisayarOyuncu("Bilgisayar");
+    } else {
+        cout << "Gecersiz secim!" << endl;  // Geçersiz seçim uyarısı
+        return 1;
+    }
+
+    Oyun oyun(oyuncu1, oyuncu2);  // Oyun nesnesi oluştur
+    oyun.oynaOyun();  // Oyunu başlat
+
+    delete oyuncu1;  // Bellek temizleme
+    delete oyuncu2;
 
 
 return 0;
