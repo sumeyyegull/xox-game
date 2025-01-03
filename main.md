@@ -132,7 +132,38 @@ private:
     Oyuncu* oyuncu1;  // 1. oyuncu
     Oyuncu* oyuncu2;  // 2. oyuncu
     Oyuncu* aktifOyuncu;  // Şu anki aktif oyuncu
+public:
+    Oyun(Oyuncu* o1, Oyuncu* o2) : oyuncu1(o1), oyuncu2(o2), aktifOyuncu(o1) {}  // Yapıcı
 
+    void oynaOyun() {  // Oyunu oynama fonksiyonu
+        int satir, sutun;
+        char sembol;
+
+        while (true) {  // Oyun devam ederken
+            sembol = (aktifOyuncu == oyuncu1) ? 'X' : 'O';  // Aktif oyuncuya göre sembol belirleme
+
+            aktifOyuncu->hamleYap(satir, sutun);  // Hamle yapma
+
+            if (tahta.hamleYap(satir, sutun, sembol)) {  // Geçerli hamle ise
+                tahta.display();  // Tahtayı görüntüle
+
+                if (tahta.kazananiBelirle() == sembol) {  // Kazanan belirlendiyse
+                    cout << aktifOyuncu->getAd() << " kazandi!" << endl;
+                    aktifOyuncu->arttirSkor();  // Skor artır
+                    aktifOyuncu->kaydetVeriTabani();  // Skoru kaydet
+                    break;  // Oyunu bitir
+                } else if (tahta.alanDoluMu()) {  // Tahta dolmuşsa
+                    cout << "Beraberlik!" << endl;
+                    break;  // Beraberlik
+                }
+
+                aktifOyuncu = (aktifOyuncu == oyuncu1) ? oyuncu2 : oyuncu1;  // Sıradaki oyuncuya geç
+            } else {
+                cout << "Gecersiz hamle, tekrar deneyin." << endl;  // Geçersiz hamle uyarısı
+            }
+        }
+    }
+};
 
 int main(){
 
