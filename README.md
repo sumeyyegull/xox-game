@@ -1,44 +1,33 @@
-# ❌⭕ XOX Game (Tic Tac Toe) - C++ Konsol Uygulaması
+# xox-game
+XOX Game - C++
+Bu proje, C++ dili kullanılarak Nesne Yönelimli Programlama (OOP) prensiplerine uygun şekilde geliştirilmiş klasik bir Tic Tac Toe (XOX) oyunudur. Oyuncular sırayla X ve O sembollerini 3x3’lük bir tahtaya yerleştirerek oyunu kazanmaya çalışır. Oyun, İnsan vs İnsan ve İnsan vs Bilgisayar modlarını destekler. Bilgisayar rastgele hamleler yapar.
 
-Bu proje, **C++** dilinde **Nesne Yönelimli Programlama (OOP)** prensiplerine uygun olarak geliştirilmiş klasik bir **XOX (Tic Tac Toe)** oyunudur. Oyuncular 3x3'lük bir tahtada sırayla hamle yaparak kazanmayı hedefler. Oyun, hem **İnsan vs İnsan** hem de **İnsan vs Bilgisayar** modlarını destekler.
+Kullanılan Teknolojiler
+-C++
+-Nesne Yönelimli Programlama (OOP)
+-Konsol (Terminal) Uygulaması
 
-## 🚀 Kullanılan Teknolojiler
+Proje Özellikleri
+-OOP temelli sınıf yapısı
+-3x3 oyun tahtası
+-Oyuncu adı girişi
+-Bilgisayara karşı oynama modu (rastgele hamle yapar)
+-Kazanma kontrolü (yatay, dikey, çapraz)
+-Beraberlik tespiti
+-Geçersiz hamle kontrolü
+-Skorların oyuncu_skorları.txt dosyasına kaydedilmesi
 
-- C++
-- Nesne Yönelimli Programlama (OOP)
-- Konsol uygulaması (Terminal tabanlı)
+Sınıf Yapısı
+-OyunNesnesi: Tüm görsel oyun nesneleri için soyut sınıf (draw(), erase() metodları).
+-Oyuncu: İnsan oyuncunun adını ve hamlelerini yönetir.
+-BilgisayarOyuncu: Rastgele hamle yapan bilgisayar oyuncusu.
+-Tahta: Oyun tahtasını ve kuralları yönetir.
+-Oyun: Oyun akışını, oyuncu sırasını ve skor işlemlerini kontrol eder.
 
-## 🎮 Oyun Özellikleri
+Oyun Kuralları
+-Oyuncular sırayla hamle yapar (X ve O).
+-Aynı satır, sütun veya çaprazda 3 sembolü olan oyuncu oyunu kazanır.
+-Tüm hücreler dolduğunda kazanan yoksa oyun berabere biter.
+-Bilgisayar oyuncusu rastgele hamle yapar.
+-Geçersiz girişler reddedilir ve tekrar istenir.
 
-- OOP prensiplerine uygun sınıf yapısı
-- 3x3 oyun tahtası
-- Oyuncu adı girişi
-- Bilgisayara karşı oynama seçeneği (rastgele hamle yapar)
-- Yatay, dikey ve çapraz kazanma kontrolü
-- Beraberlik durumu tespiti
-- Geçersiz hamle kontrolü
-- Kazananın adı ve skoru `oyuncu_skorları.txt` dosyasına kaydedilir
-
-## 🧱 Sınıf Yapısı
-
-- `OyunNesnesi` (Soyut Sınıf): Görsel oyun nesneleri buradan türetilir.
-- `Oyuncu`: Oyuncu bilgilerini ve hamlelerini yönetir.
-- `BilgisayarOyuncu`: Rastgele hamle yapan bilgisayar oyuncusu.
-- `Tahta`: Oyun tahtasını ve oyun kurallarını yönetir.
-- `Oyun`: Oyun akışını, oyuncu sırasını ve skor kayıtlarını kontrol eder.
-
-## 🎯 Oyun Kuralları
-
-- Oyuncular sırayla hamle yapar (X ve O sembolleri).
-- Aynı satır, sütun veya çaprazda üçlü yapan oyuncu kazanır.
-- Tüm hücreler dolarsa ve kazanan yoksa oyun berabere biter.
-- Bilgisayar, hamlelerini rastgele seçer.
-- Geçersiz hamlelerde uyarı verilir ve tekrar istenir.
-
-## 🛠️ Derleme ve Çalıştırma
-
-Aşağıdaki komutları kullanarak projeyi derleyip çalıştırabilirsiniz:
-
-```bash
-g++ main.cpp -o xox
-./xox
